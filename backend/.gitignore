@@ -131,3 +131,6 @@ dist
 
 # history
 .history
+# stryker temp files
+.stryker-tmp
+reports/mutation

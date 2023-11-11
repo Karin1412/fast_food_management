@@ -59,7 +59,7 @@ describe('handleRefreshToken', () => {
         expect(res.sendStatus).toHaveBeenCalledWith(403);
     });
 
-    it('should generate a new access token and return it along with roles', async () => {
+    test('should generate a new access token and return it along with roles', async () => {
         const foundAccount = {
             refreshToken: 'mocked-refresh-token',
             email: 'test@example.com',
