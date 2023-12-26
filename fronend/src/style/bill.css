@@ -1,0 +1,58 @@
+/* src/pages/InvoicePage.css */
+.invoice-page {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .invoice-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 4px;
+  }
+  
+  .invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .invoice-table th,
+  .invoice-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .invoice-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .invoice-table tbody tr:hover {
+    background-color: #f5f5f5;
+  }
+  
+  /* Style cho ô filter */
+  .invoice-content .mb-2 {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .invoice-content .mb-2 > div {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .invoice-content .mb-2 input {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .invoice-content .mb-2 span {
+    margin-right: 5px;
+  }
+  
+  .invoice-content .mb-2 .flex {
+    display: flex;
+    align-items: center;
+  }
+  
