@@ -1,6 +1,5 @@
 import React from 'react';
 import BG from '../../assets/background.avif'
-import { Link } from 'react-router-dom';
 function Login() {
   return (
     <div className="h-screen flex">
