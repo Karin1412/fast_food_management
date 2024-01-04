@@ -47,10 +47,10 @@ jobs:
 
     - name: Install dependencies
       run: |
-        cd frontend
+        cd fronend
         npm install
 
     - name: Build React app
       run: |
-        cd frontend
+        cd fronend
         npm run build
