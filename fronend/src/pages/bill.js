@@ -4,7 +4,7 @@ import Header from '../components/header';
 import '../style/bill.css';
 
 const InvoicePage = () => {
-  const [invoices, setInvoices] = useState([
+  const [invoices] = useState([
     { code: 'HD001', productName: 'Sản phẩm A', quantity: 2, price: 100, date: new Date('2023-01-15') },
     { code: 'HD002', productName: 'Sản phẩm B', quantity: 1, price: 150, date: new Date('2023-02-20') },
     { code: 'HD003', productName: 'Sản phẩm C', quantity: 3, price: 200, date: new Date('2023-02-25') },
