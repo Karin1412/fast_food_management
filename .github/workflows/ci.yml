@@ -1,40 +1,56 @@
-name: Node.js CI
+name: CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  build:
+  backend-tests:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
+    - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
       with:
-        node-version: 14
+        node-version: '14'
 
-    - name: Install Dependencies
-      run: npm install
+    - name: Install dependencies
+      run: |
+        cd backend
+        npm install
 
-    - name: Run Tests
-      run: npm test
-  
-  mutation-testing:
+    - name: Run Jest tests
+      run: |
+        cd backend
+        npm test
+
+    - name: Run Stryker mutation tests
+      run: |
+        cd backend
+        npx stryker run
+
+  frontend-build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
+    - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
       with:
-        node-version: 14
+        node-version: '14'
 
-    - name: Install Dependencies
-      run: npm install
+    - name: Install dependencies
+      run: |
+        cd frontend
+        npm install
 
-    - name: Run Stryker Mutation Testing
-      run: npm run stryker
+    - name: Build React app
+      run: |
+        cd frontend
+        npm run build
