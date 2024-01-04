@@ -1,56 +1,69 @@
 name: CI
 
-on:
-  push:
-    branches:
-      - main
+on: [push, pull_request]
 
 jobs:
   backend-tests:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: ["18.18.0"]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        include:
+          - node-version: "18.18.0"
+            next-env: "production"
+
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '14'
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - name: Install dependencies
-      run: |
-        cd backend
-        npm install
+      - name: Install dependencies
+        run: |
+          cd backend
+          npm install
 
-    - name: Run Jest tests
-      run: |
-        cd backend
-        npm test
+      - name: Run Jest tests
+        run: |
+          cd backend
+          npm test
 
-    - name: Run Stryker mutation tests
-      run: |
-        cd backend
-        npx stryker run
+      - name: Run Stryker mutation tests
+        run: |
+          cd backend
+          npx stryker run
 
   frontend-build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: ["18.18.0"]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        include:
+          - node-version: "18.18.0"
+            next-env: "production"
+
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '14'
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - name: Install dependencies
-      run: |
-        cd fronend
-        npm install
+      - name: Install dependencies
+        run: |
+          cd fronend
+          npm install
 
-    - name: Build React app
-      run: |
-        cd fronend
-        npm run build
+      - name: Build React app
+        run: |
+          cd fronend
+          npm run build

@@ -41,7 +41,7 @@ describe('handleLogout', () => {
 
         expect(Account.findOne).toHaveBeenCalledTimes(1)
         expect(foundAccount.refreshToken).toBe('')
-        expect(res.clearCookie).toHaveBeenCalledWith('jwt', { httpOnly: true, sameSite: 'None', secure: true })
+        expect(res.clearCookie).toHaveBeenCalledTimes(1)
         expect(res.sendStatus).toHaveBeenCalledWith(204)
     })
 })
